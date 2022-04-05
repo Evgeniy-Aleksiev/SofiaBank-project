@@ -1,0 +1,29 @@
+@import url(https://fonts.googleapis.com/css?family=Lato:100,300,400,700);
+
+/* Header */
+
+.main-header{
+    /* position: absolute; */
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 0;
+}
+
+.main-header__content{
+    display: flex;
+    -webkit-box-pack: justify;
+    justify-content: space-between;
+}
+
+
+.site-logo__img {
+    max-width: 284px;
+}
+
+
+/* Footer */
+
+.main-footer__bottom{
+    padding: 20px 0;
+}

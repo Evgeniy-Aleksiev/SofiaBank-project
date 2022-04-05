@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+{% block page_content %}
+    <a href="{% url 'products and services' %}" class="previous page">Back to Products and Services</a>
+
+    <h1 class="loan-label">Saving account and Deposits</h1>
+    <p></p>
+
+    <form method="post" class="loan-form" action="{% url 'savings and deposit' %}">
+        {% csrf_token %}
+        {{ form }}
+        <button class="btn btn-primary mt-2" type="submit">Apply now</button>
+    </form>
+{% endblock %}

@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+{% block page_content %}
+
+    <h1 class="text-center">Edit </h1>
+    <div class="row">
+        <form method="post" action="{% url 'profile edit' object.user.id %}">
+
+            {{ form }}
+            {% csrf_token %}
+
+            <button class="save button" type="submit">Edit</button>
+        </form>
+    </div>
+
+{% endblock %}

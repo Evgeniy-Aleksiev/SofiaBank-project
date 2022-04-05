@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+{% block page_content %}
+    <a href="{% url 'products and services' %}" class="previous page">Back to Products and Services</a>
+    <h1 class="loan-label">Loans</h1>
+    <p>Whether you want a bank loan to buy a car, improve your home or buy a house,
+        compare our loans to find the one that’s perfect for your plans. You can borrow from 1000lv to 200 000lv.</p>
+    <div class="loan-info">
+        <div class="consumer-loan">
+            <h3>Consumer loan</h3>
+            <p>Borrow with consumer loan and make your goals a reality. Interest rate 5.3%.</p>
+        </div>
+        <div class="house-loan">
+            <h3>House loan</h3>
+            <p>Borrow with house loan and get your house faster. Interest rate 4.5%.</p>
+        </div>
+        <div class="mortgage-loan">
+            <h3>Mortgage loan</h3>
+            <p>Borrow with Mortgage loan. We've got everything you need to make finding a mortgage straightforward. Interest rate 3.4%.</p>
+        </div>
+    </div>
+    <form method="post" class="loan-form" action="{% url 'loans' %}">
+        {% csrf_token %}
+        {{ form }}
+        <button class="btn btn-primary mt-2" type="submit">Apply now</button>
+    </form>
+{% endblock %}

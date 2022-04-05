@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+{% block page_content %}
+    <h1 class="text-center">Login to Your Profile</h1>
+    <div class="row">
+        <div class="login-form">
+            <form method="post">
+                {% csrf_token %}
+                {{ form }}
+                <button class="login-form__button" type="submit">Log in</button>
+            </form>
+        </div>
+        <div class="register-button">
+           <a href="{% url 'register' %}">Sign up</a>
+        </div>
+    </div>
+{% endblock %}

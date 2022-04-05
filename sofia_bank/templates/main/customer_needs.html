@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+{% block page_content %}
+    <div class="needs">
+        <div class="house">
+        <a href="{% url 'loans' %}" class="needs-button">
+            <i class="fa fa-home" aria-hidden="true"></i>
+        </a>
+        <p>Want to buy an apartment or a house? We offer you to pick House loan or Mortgage loan.</p>
+        </div>
+        <div class="bag">
+            <a href="{% url 'loans' %}" class="needs-button">
+                <i class="fa fa-suitcase" aria-hidden="true"></i>
+            </a>
+            <p>Do you want to travel? We offer you to pick Consumer loan.</p>
+        </div>
+        <div class="wrench">
+            <a href="{% url 'loans' %}" class="needs-button">
+                <i class="fa fa-wrench" aria-hidden="true"></i>
+            </a>
+            <p>Do you want to renovate your home? We offer you to pick Consumer loan.</p>
+        </div>
+        <div class="car">
+            <a href="{% url 'loans' %}" class="needs-button">
+                <i class="fa fa-car" aria-hidden="true"></i>
+            </a>
+            <p>Do you want to buy a brand new car? We offer you to pick Consumer loan.</p>
+        </div>
+        <div class="graduation">
+            <a href="{% url 'savings and deposit' %}" class="needs-button">
+                <i class="fa fa-graduation-cap" aria-hidden="true"></i>
+            </a>
+            <p>If you want to save money for education. We offer you to pick Savings.</p>
+        </div>
+        <div class="money">
+            <a href="{% url 'savings and deposit' %}" class="needs-button">
+                <i class="fa fa-money" aria-hidden="true"></i>
+            </a>
+            <p>I want new solutions for my savings or Deposit a loan. We offer you to pick Savings or Deposit.</p>
+        </div>
+
+    </div>
+{% endblock %}

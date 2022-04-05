@@ -1,0 +1,50 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>SofiaBank</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="{% static 'css/web_style.css' %}"/>
+</head>
+<body>
+    {% csrf_token %}
+    <header class="main-header">
+        <div class="main-header__content">
+            <h1 class="site-logo">
+                {# <img src="{% static 'images/mobile-banking.jpg' %}" alt="headphones">  #}
+                <a href="{% url 'index' %}" class="site-logo__link">
+                    <img src="{% static 'images/logo.png' %}" class="site-logo__img" alt="Sofia banking">
+                </a>
+            </h1>
+            <nav class="main-nav">
+                <div>
+                    <a href="{% url 'products and services' %}">Products and Services for</a>
+                    <a href="{% url 'bank info' %}">About us</a>
+                    <a href="{% url 'customer needs' %}">Needs</a>
+                    <a href="">Branches and ATMs</a>
+                    <a href="">Contacts</a>
+                    {% if request.user.is_authenticated %}
+                        <a href="{% url 'dashboard' request.user.id %}" class="ebanking button">Profile</a>
+                    {% else %}
+                        <a href="{% url 'login user' %}" class="ebanking button">My Banking</a>
+                    {% endif %}
+                </div>
+                {% if request.user.is_authenticated %}
+                        <a>Welcome, {{ user }} </a>
+                {% endif %}
+            </nav>
+        </div>
+    </header>
+
+    {% block page_content %}
+    {% endblock %}
+
+    <footer>
+        <div class="main-footer__bottom">
+            &copy;SoftUni Aleksiev's Project 2022. All rights reserved.
+        </div>
+    </footer>
+</body>
+</html>

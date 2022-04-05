@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+{% block page_content %}
+    <div class="back-button">
+        <a href="{% url 'dashboard' object.user.id %}">Back</a>
+    </div>
+    <h3 class="text-center info">Profile Info</h3>
+    <div class="profile info">
+        <h5>Name: {{ profile }}</h5>
+        <h5>Birthday: {{ profile.date_of_birth }}</h5>
+        <h5>EGN: {{ profile.egn }}</h5>
+        <h5>Mobile number: {{ profile.mobile_number }}</h5>
+        <h5>Email: {{ profile.email }}</h5>
+        {% if profile.gender == 'Male' or profile.gender == 'Female' %}
+            <h5>Gender: {{ profile.gender }}</h5>
+        {% endif %}
+    </div>
+    <div class="buttons">
+        <a href="{% url 'profile edit' object.user.id%}">
+            <button class="btn"><i class="fa fa-pencil"> Profile edit</i></button>
+        </a>
+        <a href="{% url 'profile delete' object.user.id %}">
+            <button class="btn"><i class="fa fa-trash"> Delete profile</i></button>
+        </a>
+    </div>
+{% endblock %}

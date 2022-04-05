@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+{% block page_content %}
+    <h1 class='text-center'>
+        Products for</h1>
+    <div class='container-products'>
+        <div class='bank-products'>
+            <a href="{% url 'loans' %}" class='loans'>Loans</a>
+            <a href="{% url 'savings and deposit' %}" class='Savings'>Savings and Deposit</a>
+        </div>
+    </div>
+{% endblock %}
