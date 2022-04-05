@@ -23,8 +23,8 @@
                     <a href="{% url 'products and services' %}">Products and Services for</a>
                     <a href="{% url 'bank info' %}">About us</a>
                     <a href="{% url 'customer needs' %}">Needs</a>
-                    <a href="">Branches and ATMs</a>
-                    <a href="">Contacts</a>
+                    <a href="{% url 'contacts' %}">Contacts</a>
+                    <a href="">Feedback</a>
                     {% if request.user.is_authenticated %}
                         <a href="{% url 'dashboard' request.user.id %}" class="ebanking button">Profile</a>
                     {% else %}

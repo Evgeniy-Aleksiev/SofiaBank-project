@@ -143,6 +143,3 @@ class EditProfileForm(BootstrapFormMixin, forms.ModelForm):
 
 class DeleteProfileForm(forms.ModelForm):
     pass
-
-
-

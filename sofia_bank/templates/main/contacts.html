@@ -1,4 +1,20 @@
 {% extends 'base.html' %}
 {% block page_content %}
-
+    <div class="branches">
+        <h2>Branches</h2>
+        <h5>Work time: 09:00-17:30 </h5>
+        <ul>
+            {% for bank in banks %}
+                <li>{{ bank }} </li>
+            {% endfor %}
+        </ul>
+    </div>
+    <div class="atm">
+        <h2>ATMs</h2>
+        <ul>
+            {% for a in atms %}
+                <li>{{ a }} </li>
+            {% endfor %}
+        </ul>
+    </div>
 {% endblock %}
