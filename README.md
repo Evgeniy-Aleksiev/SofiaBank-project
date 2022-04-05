@@ -1,0 +1,1 @@
+# SoftUni django project
