@@ -1,4 +1,10 @@
 {% extends 'base.html' %}
 {% block page_content %}
-
+    <div class="feedback">
+        <form action="{% url 'feedback' %}" method="post">
+            {% csrf_token %}
+            {{ form }}
+            <button class="btn btn-primary mt-2" type="submit">Submit</button>
+        </form>
+    </div>
 {% endblock %}

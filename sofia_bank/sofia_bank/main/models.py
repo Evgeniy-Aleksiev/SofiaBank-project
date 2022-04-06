@@ -154,7 +154,6 @@ class Feedback(models.Model):
 
     username = models.CharField(
         max_length=USER_MAX_LEN,
-        unique=True,
         validators=(
             MinLengthValidator(USER_MIN_LEN),
         )

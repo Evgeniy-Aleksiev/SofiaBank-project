@@ -1,5 +1,8 @@
+from django.urls import reverse_lazy
 from django.views import generic as views
+from django.contrib.auth import mixins as auth_mixin
 
+from sofia_bank.main.forms import FeedbackForm
 from sofia_bank.main.models import AtmAndBranches
 
 
@@ -24,5 +27,17 @@ class ContactView(views.TemplateView):
         })
 
         return context
+
+
+class FeedbackView(auth_mixin.LoginRequiredMixin, views.CreateView):
+    template_name = 'main/feedback.html'
+    form_class = FeedbackForm
+
+    def get_success_url(self):
+        return reverse_lazy('feedback message')
+
+
+class FeedbackMessageView(views.TemplateView):
+    template_name = 'main/feedback_message.html'
 
 

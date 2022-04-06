@@ -1,6 +1,6 @@
 from django.urls import path
 
-from sofia_bank.main.views.bank_information import AboutUsView, ContactView
+from sofia_bank.main.views.bank_information import AboutUsView, ContactView, FeedbackView, FeedbackMessageView
 from sofia_bank.main.views.generic import HomeView, DashboardView
 from sofia_bank.main.views.products import CreateLoanView, ProductsAndServicesView, CreateSavingView, LoanDetailView, \
     NeedsView
@@ -10,6 +10,8 @@ urlpatterns = [
 
     path('about-us/', AboutUsView.as_view(), name='bank info'),
     path('contacts/', ContactView.as_view(), name='contacts'),
+    path('feedback/', FeedbackView.as_view(), name='feedback'),
+    path('feedback/feedback-message/', FeedbackMessageView.as_view(), name='feedback message'),
 
     path('dashboard/<int:pk>/', DashboardView.as_view(), name='dashboard'),
     path('dashboard/loan-detail/<int:pk>/', LoanDetailView.as_view(), name='loan detail'),
