@@ -2,17 +2,13 @@ from django.views import generic as views
 from django.views.decorators.cache import cache_page
 
 from sofia_bank.accounts.models import Profile
-from sofia_bank.main.models import BankLoans, BankSavings
+from sofia_bank.main.models import BankLoans, BankSavings, ExchangeRates
 
 
-class HomeView(views.TemplateView):
+class HomeView(views.ListView):
+    queryset = ExchangeRates.objects.order_by('currency')
     template_name = 'main/home_page.html'
-
-    def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
-        context['profile'] = Profile
-
-        return context
+    context_object_name = 'exchanges'
 
 
 #@cache_page(60)
