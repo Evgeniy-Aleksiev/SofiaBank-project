@@ -1,10 +1,11 @@
 from django.urls import path
 
-from sofia_bank.accounts.views import UserLoginView, UserRegisterView, ProfileDetailsView,\
-    ProfileEditView, ProfileDeleteView
+from sofia_bank.accounts.views import UserLoginView, UserRegisterView, ProfileDetailsView, \
+    ProfileEditView, ProfileDeleteView, UserLogoutView
 
 urlpatterns = (
     path('login/', UserLoginView.as_view(), name='login user'),
+    path('logout/', UserLogoutView.as_view(), name='logout user'),
     path('register/', UserRegisterView.as_view(), name='register'),
 
     path('profile/<int:pk>/', ProfileDetailsView.as_view(), name='profile details'),

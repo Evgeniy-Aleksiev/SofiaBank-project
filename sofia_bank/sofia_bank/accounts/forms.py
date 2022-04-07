@@ -86,48 +86,6 @@ class CreateProfileForm(BootstrapFormMixin, auth_forms.UserCreationForm):
         model = get_user_model()
         fields = ('first_name', 'middle_name', 'last_name', 'username', 'egn',
                   'email', 'mobile_number', 'date_of_birth', 'gender')
-        widgets = {
-            'first_name': forms.TextInput(
-                attrs={
-                    'placeholder': 'First name',
-                }
-            ),
-            'middle_name': forms.TextInput(
-                attrs={
-                    'placeholder': 'Middle name',
-                }
-            ),
-            'last_name': forms.TextInput(
-                attrs={
-                    'placeholder': 'Last name',
-                }
-            ),
-            'egn': forms.TextInput(
-                attrs={
-                    'placeholder': 'EGN',
-                }
-            ),
-            'email': forms.EmailInput(
-                attrs={
-                    'placeholder': 'Email',
-                }
-            ),
-            'mobile_number': forms.TextInput(
-                attrs={
-                    'placeholder': 'Mobile number',
-                }
-            ),
-            'date_of_birth': forms.DateInput(
-                attrs={
-                    'placeholder': 'Date of birth',
-                }
-            ),
-            'gender': forms.Select(
-                attrs={
-                    'placeholder': 'gender',
-                }
-            ),
-        }
 
 
 class EditProfileForm(BootstrapFormMixin, forms.ModelForm):
@@ -141,16 +99,11 @@ class EditProfileForm(BootstrapFormMixin, forms.ModelForm):
         fields = '__all__'
 
 
-class DeleteProfileForm(BootstrapFormMixin, DisabledFieldsFormMixin, forms.ModelForm):
-    def __init__(self, *args, **kwargs):
-        super().__init__(*args, **kwargs)
-        self._init_bootstrap_form_controls()
-        self._init_disabled_fields()
-
+class DeleteProfileForm(forms.ModelForm):
     def save(self, commit=True):
         self.instance.delete()
         return self.instance
 
     class Meta:
         model = Profile
-        exclude = ('gender', 'date_of_birth', )
+        fields = ()

@@ -5,6 +5,7 @@ from django.views import generic as views
 
 from sofia_bank.accounts.forms import CreateProfileForm, DeleteProfileForm
 from sofia_bank.accounts.models import Profile
+from sofia_bank.main.models import BankLoans
 
 
 class UserLoginView(auth_views.LoginView):
@@ -15,6 +16,10 @@ class UserLoginView(auth_views.LoginView):
         if self.success_url:
             return self.success_url
         return super().get_success_url()
+
+
+class UserLogoutView(auth_views.LogoutView):
+    pass
 
 
 class UserRegisterView(views.CreateView):
@@ -52,5 +57,11 @@ class ProfileDeleteView(LoginRequiredMixin, views.DeleteView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
+
+        loan = list(BankLoans.objects.filter(user_id=self.object.user_id))
+
+        context.update({
+            'loan': loan,
+        })
 
         return context

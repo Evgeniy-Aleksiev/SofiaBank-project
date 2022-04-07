@@ -1,17 +1,24 @@
 {% extends 'base.html' %}
 {% block page_content %}
-    <h1 class="text-center">Delete profile</h1>
     <a href="{% url 'profile details' object.user.pk %}">Back</a>
-        <div class="row">
-            <div class="delete-form">
-                <form method="post" action="{% url 'profile delete' object.user.pk %}">
+    <h1 class="text-center">Delete profile</h1>
+    <section id="detailsPage">
+        <div class="wrapper">
+            <div class="profileText">
+                {% if loan %}
+                    <h3>You have to pay the loans first.</h3>
 
-                    {{ form }}
-                    {% csrf_token %}
+                {% else %}
+                    <h3>Are you sure you want to delete your profile?</h3>
+                    <form method="post" action="{% url 'profile delete' object.user.pk %}">
 
-                    <button class="delete__button" type="submit">Delete</button>
-                </form>
+                        {{ form }}
+                        {% csrf_token %}
+
+                        <button class="delete-profile" type="submit">Delete</button>
+                    </form>
+                {% endif %}
             </div>
         </div>
-
+    </section>
 {% endblock %}

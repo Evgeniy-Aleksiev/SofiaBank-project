@@ -1,3 +1,5 @@
+from django.conf import settings
+from django.conf.urls.static import static
 from django.urls import path
 
 from sofia_bank.main.views.bank_information import AboutUsView, ContactView, FeedbackView, FeedbackMessageView
@@ -20,4 +22,4 @@ urlpatterns = [
     path('products-services/', ProductsAndServicesView.as_view(), name='products and services'),
     path('products-services/loans/', CreateLoanView.as_view(), name='loans'),
     path('products-services/savings/', CreateSavingView.as_view(), name='savings and deposit'),
-]
+] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

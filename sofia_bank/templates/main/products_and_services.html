@@ -1,11 +1,27 @@
 {% extends 'base.html' %}
+{% load static %}
 {% block page_content %}
-    <h1 class='text-center'>
-        Products for</h1>
-    <div class='container-products'>
-        <div class='bank-products'>
-            <a href="{% url 'loans' %}" class='loans'>Loans</a>
-            <a href="{% url 'savings and deposit' %}" class='Savings'>Savings and Deposit</a>
+
+    <h1 class='text-center'>Products for</h1>
+    <div class="card-group">
+        <div class="card">
+            <img class="card-img-top" src="{% static 'images/loan.jpg' %}" alt="Card image cap">
+            <div class="card-body">
+                <h5 class="card-title">Loans</h5>
+                <p class="card-text">Loans with attractive terms. Now you have the opportunity to
+                    sign your loan documents entirely online.</p>
+                <a href="{% url 'loans' %}" class="btn btn-primary">Loans</a>
+            </div>
+        </div>
+        <div class="card">
+            <img class="card-img-top" src="{% static 'images/save.jpg' %}" alt="Card image cap">
+            <div class="card-body">
+                <h5 class="card-title">Deposit and Savings</h5>
+                <p class="card-text">Deposit products tailored to your plans and desires. You have the
+                    opportunity to save for a short or longer period of time</p>
+                <a href="{% url 'loans' %}" class="btn btn-primary">Loans</a>
+            </div>
         </div>
     </div>
+
 {% endblock %}
