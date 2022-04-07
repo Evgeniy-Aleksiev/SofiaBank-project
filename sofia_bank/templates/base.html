@@ -10,40 +10,40 @@
 </head>
 <body>
     {% csrf_token %}
-{#    <header class="main-header">#}
-{#        <div class="main-header__content">#}
+    <header class="main-header">
+        <div>
 {#            <h1 class="site-logo">#}
 {#                <a href="{% url 'index' %}" class="site-logo__link">#}
 {#                    <img src="{% static 'images/logo.png' %}" class="rounded float-start" width="284" alt="Sofia banking">#}
 {#                </a>#}
 {#            </h1>#}
             <nav class="navbar navbar-dark bg-primary">
+                <a href="{% url 'index' %}" class="navbar-brand">
+                    <img src="{% static 'images/logo1.png' %}" class="rounded float-start" width="200" alt="Sofia banking">
+                </a>
                 <ul class="nav justify-content-end">
-                    <a href="{% url 'index' %}" class="navbar-brand">
-                        <img src="{% static 'images/logo.png' %}" class="rounded float-start" width="284" alt="Sofia banking">
-                    </a>
                     <li class="nav-item">
                         <a href="{% url 'products and services' %}" class="nav-link text-white">Products and Services for</a>
                     </li>
                     <li class="nav-item">
-                        <a href="{% url 'bank info' %}" class="nav-link">About us</a>
+                        <a href="{% url 'bank info' %}" class="nav-link text-white">About us</a>
                     </li>
                     <li class="nav-item">
-                        <a href="{% url 'customer needs' %}" class="nav-link">Needs</a>
+                        <a href="{% url 'customer needs' %}" class="nav-link text-white">Needs</a>
                     </li>
                     <li class="nav-item">
-                        <a href="{% url 'contacts' %}" class="nav-link">Contacts</a>
+                        <a href="{% url 'contacts' %}" class="nav-link text-white">Contacts</a>
                     </li>
                     <li class="nav-item">
-                        <a href="{% url 'feedback' %}" class="nav-link">Feedback</a>
+                        <a href="{% url 'feedback' %}" class="nav-link text-white">Feedback</a>
                     </li>
                     {% if request.user.is_authenticated %}
                         <li class="nav-item">
-                            <a href="{% url 'dashboard' request.user.id %}" class="nav-link">Profile</a>
+                            <a href="{% url 'dashboard' request.user.id %}" class="nav-link text-white">Profile</a>
                         </li>
                     {% else %}
                         <li class="nav-item">
-                            <a href="{% url 'login user' %}" class="nav-link">My Banking</a>
+                            <a href="{% url 'login user' %}" class="nav-link text-white">My Banking</a>
                         </li>
                     {% endif %}
                 </ul>
@@ -51,7 +51,7 @@
                     {% if request.user.is_authenticated %}
                         <span class="navbar-text">Welcome, {{ user }} </span>
                         <li class="nav-item">
-                            <a href="" class="nav-link">Sign out</a>
+                            <a href="" class="nav-link text-danger">Sign out</a>
                         </li>
                     {% endif %}
                 </ul>
