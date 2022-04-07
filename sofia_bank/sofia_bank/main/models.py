@@ -163,7 +163,9 @@ class Feedback(models.Model):
 
     details = models.TextField()
 
-    date = models.DateField(auto_now_add=True)
+    date = models.DateField(
+        auto_now_add=True,
+    )
 
     bank_or_atm_number = models.ForeignKey(
         AtmAndBranches,
@@ -171,4 +173,22 @@ class Feedback(models.Model):
     )
 
 
+class ExchangeRates(models.Model):
+    date = models.DateField()
+
+    currency = models.CharField(
+        unique=True,
+        max_length=3,
+        validators=(
+            MinLengthValidator(3),
+        )
+    )
+
+    fixing = models.FloatField()
+
+    buy = models.FloatField()
+
+    sell = models.FloatField()
+
+    currency_units = models.IntegerField()
 

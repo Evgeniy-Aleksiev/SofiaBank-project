@@ -1,4 +1,5 @@
 from django.contrib.auth import views as auth_views
+from django.contrib.auth.mixins import LoginRequiredMixin
 from django.urls import reverse_lazy
 from django.views import generic as views
 
@@ -24,7 +25,7 @@ class UserRegisterView(views.CreateView):
         return reverse_lazy('dashboard', kwargs={'pk': self.object.user.id})
 
 
-class ProfileDetailsView(views.DetailView):
+class ProfileDetailsView(LoginRequiredMixin, views.DetailView):
     model = Profile
     template_name = 'accounts/profile_details.html'
 
@@ -34,7 +35,7 @@ class ProfileDetailsView(views.DetailView):
         return context
 
 
-class ProfileEditView(views.UpdateView):
+class ProfileEditView(LoginRequiredMixin, views.UpdateView):
     model = Profile
     template_name = 'accounts/profile_edit.html'
     fields = ('mobile_number', 'email', 'gender')
@@ -43,8 +44,13 @@ class ProfileEditView(views.UpdateView):
         return reverse_lazy('profile details', kwargs={'pk': self.object.user.id})
 
 
-class ProfileDeleteView(views.DeleteView):
+class ProfileDeleteView(LoginRequiredMixin, views.DeleteView):
     model = Profile
     template_name = 'accounts/profile_delete.html'
     form_class = DeleteProfileForm
+    success_url = reverse_lazy('index')
 
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+
+        return context

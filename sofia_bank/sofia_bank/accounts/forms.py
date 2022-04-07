@@ -3,7 +3,7 @@ from django.contrib.auth import forms as auth_forms, get_user_model
 from django.core.validators import MinLengthValidator
 
 from sofia_bank.accounts.models import Profile
-from sofia_bank.common_files.helpers import BootstrapFormMixin
+from sofia_bank.common_files.helpers import BootstrapFormMixin, DisabledFieldsFormMixin
 from sofia_bank.common_files.validators import validate_only_letters, validate_age, validate_only_numbers
 
 
@@ -141,5 +141,16 @@ class EditProfileForm(BootstrapFormMixin, forms.ModelForm):
         fields = '__all__'
 
 
-class DeleteProfileForm(forms.ModelForm):
-    pass
+class DeleteProfileForm(BootstrapFormMixin, DisabledFieldsFormMixin, forms.ModelForm):
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self._init_bootstrap_form_controls()
+        self._init_disabled_fields()
+
+    def save(self, commit=True):
+        self.instance.delete()
+        return self.instance
+
+    class Meta:
+        model = Profile
+        exclude = ('gender', 'date_of_birth', )

@@ -1,6 +1,6 @@
 from django.contrib import admin
 
-from sofia_bank.main.models import BankLoans, BankSavings, AtmAndBranches, Feedback
+from sofia_bank.main.models import BankLoans, BankSavings, AtmAndBranches, Feedback, ExchangeRates
 
 
 @admin.register(BankLoans)
@@ -20,6 +20,12 @@ class AtmsAndBranchesAdmin(admin.ModelAdmin):
 
 @admin.register(Feedback)
 class FeedbackAdmin(admin.ModelAdmin):
-    list_display = ('bank_or_atm_number', 'username', 'date', 'happy')
+    list_display = ('bank_or_atm_number', 'username', 'date', 'happy', 'details')
     list_filter = ('date', )
+
+
+@admin.register(ExchangeRates)
+class ExchangeRatesAdmin(admin.ModelAdmin):
+    list_display = ('date', 'currency', 'fixing', 'buy', 'sell', 'currency_units')
+
 

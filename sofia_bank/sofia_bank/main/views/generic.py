@@ -1,4 +1,5 @@
 from django.views import generic as views
+from django.views.decorators.cache import cache_page
 
 from sofia_bank.accounts.models import Profile
 from sofia_bank.main.models import BankLoans, BankSavings
@@ -14,6 +15,7 @@ class HomeView(views.TemplateView):
         return context
 
 
+#@cache_page(60)
 class DashboardView(views.DetailView):
     model = Profile
     template_name = 'main/dashboard.html'

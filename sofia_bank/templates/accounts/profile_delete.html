@@ -1,4 +1,17 @@
 {% extends 'base.html' %}
 {% block page_content %}
+    <h1 class="text-center">Delete profile</h1>
+    <a href="{% url 'profile details' object.user.pk %}">Back</a>
+        <div class="row">
+            <div class="delete-form">
+                <form method="post" action="{% url 'profile delete' object.user.pk %}">
+
+                    {{ form }}
+                    {% csrf_token %}
+
+                    <button class="delete__button" type="submit">Delete</button>
+                </form>
+            </div>
+        </div>
 
 {% endblock %}
