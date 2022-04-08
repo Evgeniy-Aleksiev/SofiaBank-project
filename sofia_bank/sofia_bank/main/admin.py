@@ -20,7 +20,7 @@ class AtmsAndBranchesAdmin(admin.ModelAdmin):
 
 @admin.register(Feedback)
 class FeedbackAdmin(admin.ModelAdmin):
-    list_display = ('bank_or_atm_number', 'username', 'date', 'happy', 'details')
+    list_display = ('bank_or_atm_number', 'username', 'date', 'details')
     list_filter = ('date', )
 
 

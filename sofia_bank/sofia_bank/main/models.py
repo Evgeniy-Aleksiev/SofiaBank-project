@@ -159,8 +159,6 @@ class Feedback(models.Model):
         )
     )
 
-    happy = models.BooleanField()
-
     details = models.TextField()
 
     date = models.DateField(

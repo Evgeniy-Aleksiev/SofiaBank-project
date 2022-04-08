@@ -1,10 +1,15 @@
 {% extends 'base.html' %}
 {% block page_content %}
-    <div class="feedback">
+    <h1 class="text-center">Give us your feedback</h1>
+    <div class="row">
+        <div class="col-lg-3"></div>
+        <div class="col-lg-6">
         <form action="{% url 'feedback' %}" method="post">
             {% csrf_token %}
             {{ form }}
             <button class="btn btn-primary mt-2" type="submit">Submit</button>
-        </form>
+            </form>
+        </div>
+        <div class="col-lg-3"></div>
     </div>
 {% endblock %}
