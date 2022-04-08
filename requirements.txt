@@ -9,4 +9,5 @@ pyparsing==3.0.7
 redis==4.2.2
 sqlparse==0.4.2
 tzdata==2022.1
+whitenoise==6.0.0
 wrapt==1.14.0
