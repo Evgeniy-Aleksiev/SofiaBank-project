@@ -3,3 +3,18 @@
     width: 646px;
     height: 362px;
 }
+
+.needs{
+    font-family: 'PT serif', sans-serif;
+    background: #50b9e1;
+    padding: 20px 30px;
+    color: white;
+    margin: 50px 0;
+}
+
+.needs div{
+    width: 28%;
+    display: inline-block;
+    text-align: center;
+    padding: 20px 44px;
+}

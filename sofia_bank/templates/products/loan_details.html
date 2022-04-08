@@ -1,6 +1,6 @@
 {% extends 'base.html' %}
 {% block page_content %}
-    <a href="{% url 'dashboard' object.user.id %}">Back</a>
+    <a href="{% url 'dashboard' object.user.id %}" class="btn btn-outline-primary">Back</a>
     <h2>Your current loans account:</h2>
     <div>
         {% for current_loan in user_loans %}

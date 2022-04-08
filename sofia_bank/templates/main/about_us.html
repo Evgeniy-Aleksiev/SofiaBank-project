@@ -1,15 +1,18 @@
 {% extends 'base.html' %}
 {% load static %}
 {% block page_content %}
+
     <div class="text-center">
-        <h1 class="about-us-h1">About us</h1>
-        <p class="about-us-p">SofiaBank is the leading bank in Bulgaria, having a broad branch network across the country and a
-            considerable client base of individuals, companies and institutions. SofiaBank has developed a number
-            of projects related to social responsibility and sustainable development of business and society.
-            We, in SofiaBank, provide solutions for all challenges and opportunities our clients face in
-            their everyday activities. We strive to be a partner, easy to work with, to create real value for our customers and contractors.
-        </p>
-        <img src="{% static 'images/mobile-application.jpg' %}" class="rounded float-start" width="1200" alt="Sofia banking">
+        <div class="shadow-lg p-3 mb-5 bg-body rounded">
+            <h1 class="about-us-h1">About us</h1>
+            <p class="about-us-p">SofiaBank is the leading bank in Bulgaria, having a broad branch network across the country and a
+                considerable client base of individuals, companies and institutions. SofiaBank has developed a number
+                of projects related to social responsibility and sustainable development of business and society.
+                We, in SofiaBank, provide solutions for all challenges and opportunities our clients face in
+                their everyday activities. We strive to be a partner, easy to work with, to create real value for our customers and contractors.
+            </p>
+        </div>
+        <img src="{% static 'images/mobile-application.jpg' %}" class="rounded float-start" width="1216" alt="Sofia banking">
     </div>
 
 {% endblock %}

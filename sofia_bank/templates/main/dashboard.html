@@ -8,24 +8,26 @@
             <button class="btn"><i class="fa fa-user" aria-hidden="true"> Profile details</i></button>
         </a>
     </div>
-    <div class="accounts">
-        <div class="loan-paid">
-            <h3>Total amount of loan paid: </h3>
-            <p>{{ total_loan_paid }} lv.</p>
-        </div>
-        <div class="loans">
-                <h3>Loan account:</h3>
-                <p>{{ total_loans }} lv.</p>
-                <a href="{% url 'savings and deposit' %}">Deposit</a>
-                <a href="{% url 'loan detail' object.user.id  %}">More details</a>
-        </div>
-        <div class="deposit">
-            <h3>Total amount of deposits:</h3>
-            <p>{{ total_deposits }} lv.</p>
-        </div>
-        <div class="savings-account">
-            <h3>Saving account:</h3>
-            <p>{{ total_savings }} lv.</p>
+    <div class="shadow-lg p-3 mb-5 bg-body rounded">
+        <div class="accounts">
+            <div class="loan-paid">
+                <h3>Total amount of loan paid: </h3>
+                <p>{{ total_loan_paid }} lv.</p>
+            </div>
+            <div class="loans">
+                    <h3>Loan account:</h3>
+                    <p>{{ total_loans }} lv.</p>
+                    <a href="{% url 'savings and deposit' %}" class="btn btn-outline-primary">Deposit</a>
+                    <a href="{% url 'loan detail' object.user.id  %}" class="btn btn-outline-primary">More details</a>
+            </div>
+            <div class="deposit">
+                <h3>Total amount of deposits:</h3>
+                <p>{{ total_deposits }} lv.</p>
+            </div>
+            <div class="savings-account">
+                <h3>Saving account:</h3>
+                <p>{{ total_savings }} lv.</p>
+            </div>
         </div>
     </div>
 {% endblock %}

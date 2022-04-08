@@ -2,7 +2,7 @@
 {% load static %}
 {% block page_content %}
     <div class="back-button">
-        <a href="{% url 'dashboard' object.user.id %}">Back</a>
+        <a href="{% url 'dashboard' object.user.id %}" class="btn btn-outline-primary">Back</a>
     </div>
     <div class="card" style="width: 648px;">
         <img src="{% static 'images/mobile-banking.jpg' %}" class="card-img-top" alt="profile bank">
