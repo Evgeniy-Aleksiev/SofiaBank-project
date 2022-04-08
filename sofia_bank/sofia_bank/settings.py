@@ -8,12 +8,9 @@ SECRET_KEY = 'django-insecure-+^6$^(rs%_&ms(3(u4lytq9i#(&y#%%kyce1y%)$o#_l7%g4=s
 
 
 DEBUG = os.getenv('DEBUG', 'False') == 'True'
+APP_ENVIRONMENT = os.getenv('APP_ENVIRONMENT')
 
-ALLOWED_HOSTS = [
-    'localhost',
-    '127.0.0.1',
-    'sofia-bank.herokuapp.com',
-]
+ALLOWED_HOSTS = os.getenv('ALLOWED_HOSTS').split(' ')
 
 
 DJANGO_APPS = (
@@ -69,17 +66,30 @@ WSGI_APPLICATION = 'sofia_bank.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/4.0/ref/settings/#databases
+DATABASES = None
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'd2v6bb39rmsrq5',
-        'USER': 'zrzsmqlfvtrqye',
-        'PASSWORD': 'fd8a3d8df3978332094951a832f1965b06d5dc97f98e51bea095ab65ba5dee00',
-        'HOST': 'ec2-99-80-170-190.eu-west-1.compute.amazonaws.com',
-        'PORT': '5432',
+if APP_ENVIRONMENT == 'Production':
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.postgresql',
+            'NAME': 'd2v6bb39rmsrq5',
+            'USER': 'zrzsmqlfvtrqye',
+            'PASSWORD': 'fd8a3d8df3978332094951a832f1965b06d5dc97f98e51bea095ab65ba5dee00',
+            'HOST': 'ec2-99-80-170-190.eu-west-1.compute.amazonaws.com',
+            'PORT': '5432',
+        }
     }
-}
+else:
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.postgresql',
+            'NAME': 'sofia_bank_db',
+            'USER': 'postgres',
+            'PASSWORD': '1123QwER',
+            'HOST': '127.0.0.1',
+            'PORT': '5432',
+        }
+    }
 
 CACHES = {
     'default': {
