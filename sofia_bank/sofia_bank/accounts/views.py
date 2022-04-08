@@ -1,5 +1,5 @@
 from django.contrib.auth import views as auth_views
-from django.contrib.auth.mixins import LoginRequiredMixin
+from django.contrib.auth import mixins as auth_mixin
 from django.urls import reverse_lazy
 from django.views import generic as views
 
@@ -18,7 +18,7 @@ class UserLoginView(auth_views.LoginView):
         return super().get_success_url()
 
 
-class UserLogoutView(auth_views.LogoutView):
+class UserLogoutView(auth_mixin.LoginRequiredMixin, auth_views.LogoutView):
     pass
 
 
@@ -30,7 +30,7 @@ class UserRegisterView(views.CreateView):
         return reverse_lazy('dashboard', kwargs={'pk': self.object.user.id})
 
 
-class ProfileDetailsView(LoginRequiredMixin, views.DetailView):
+class ProfileDetailsView(auth_mixin.LoginRequiredMixin, views.DetailView):
     model = Profile
     template_name = 'accounts/profile_details.html'
 
@@ -40,7 +40,7 @@ class ProfileDetailsView(LoginRequiredMixin, views.DetailView):
         return context
 
 
-class ProfileEditView(LoginRequiredMixin, views.UpdateView):
+class ProfileEditView(auth_mixin.LoginRequiredMixin, views.UpdateView):
     model = Profile
     template_name = 'accounts/profile_edit.html'
     fields = ('mobile_number', 'email', 'gender')
@@ -49,7 +49,7 @@ class ProfileEditView(LoginRequiredMixin, views.UpdateView):
         return reverse_lazy('profile details', kwargs={'pk': self.object.user.id})
 
 
-class ProfileDeleteView(LoginRequiredMixin, views.DeleteView):
+class ProfileDeleteView(auth_mixin.LoginRequiredMixin, views.DeleteView):
     model = Profile
     template_name = 'accounts/profile_delete.html'
     form_class = DeleteProfileForm

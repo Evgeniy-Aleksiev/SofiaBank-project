@@ -6,10 +6,11 @@
 
 .needs{
     font-family: 'PT serif', sans-serif;
-    background: #50b9e1;
+    background: #0D6EFD;
     padding: 20px 30px;
     color: white;
     margin: 50px 0;
+    box-shadow: 0 6px 53px 0 rgb(0 0 0 / 59%), 0 6px 20px 0 rgb(0 0 0 / 19%);
 }
 
 .needs div{
@@ -17,4 +18,8 @@
     display: inline-block;
     text-align: center;
     padding: 20px 44px;
+}
+
+.needs div a i:hover{
+    color: wheat;
 }

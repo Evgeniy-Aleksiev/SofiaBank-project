@@ -24,7 +24,7 @@ class CreateLoanView(auth_mixin.LoginRequiredMixin, views.CreateView):
         return kwargs
 
 
-class LoanDetailView(views.DetailView):
+class LoanDetailView(auth_mixin.LoginRequiredMixin, views.DetailView):
     model = Profile
     template_name = 'products/loan_details.html'
 

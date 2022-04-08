@@ -29,7 +29,7 @@ class ContactView(views.TemplateView):
         return context
 
 
-class FeedbackView(auth_mixin.LoginRequiredMixin, views.CreateView):
+class FeedbackView(views.CreateView):
     template_name = 'main/feedback.html'
     form_class = FeedbackForm
 

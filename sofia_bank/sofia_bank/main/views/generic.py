@@ -1,4 +1,5 @@
 from django.views import generic as views
+from django.contrib.auth import mixins as auth_mixin
 from django.views.decorators.cache import cache_page
 
 from sofia_bank.accounts.models import Profile
@@ -12,7 +13,7 @@ class HomeView(views.ListView):
 
 
 #@cache_page(60)
-class DashboardView(views.DetailView):
+class DashboardView(auth_mixin.LoginRequiredMixin, views.DetailView):
     model = Profile
     template_name = 'main/dashboard.html'
     context_object_name = 'profile'
