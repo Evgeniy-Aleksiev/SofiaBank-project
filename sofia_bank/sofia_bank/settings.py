@@ -62,33 +62,19 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'sofia_bank.wsgi.application'
 
-
 # Database
 # https://docs.djangoproject.com/en/4.0/ref/settings/#databases
-DATABASES = None
-
-if APP_ENVIRONMENT == 'Production':
-    DATABASES = {
-        'default': {
-            'ENGINE': 'django.db.backends.postgresql',
-            'NAME': os.getenv('DB_NAME'),
-            'USER': os.getenv('DB_USER'),
-            'PASSWORD': os.getenv('DB_PASSWORD'),
-            'HOST': os.getenv('DB_HOST'),
-            'PORT': os.getenv('DB_PORT', '5432'),
-        }
-    }
-else:
-    DATABASES = {
+DATABASES = {
         'default': {
             'ENGINE': 'django.db.backends.postgresql',
             'NAME': os.getenv('DB_NAME', 'sofia_bank_db'),
             'USER': os.getenv('DB_USER', 'postgres'),
             'PASSWORD': os.getenv('DB_PASSWORD', '1123QwER'),
             'HOST': os.getenv('DB_HOST', '127.0.0.1'),
-            'PORT': '5432',
+            'PORT': os.getenv('DB_PORT', '5432'),
         }
     }
+
 
 CACHES = {
     'default': {
