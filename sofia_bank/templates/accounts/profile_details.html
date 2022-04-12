@@ -8,7 +8,7 @@
         <img src="{% static 'images/mobile-banking.jpg' %}" class="card-img-top" alt="profile bank">
         <div class="card-body">
             <h3 class="card-title">Profile Info</h3>
-            <h5 class="card-text">Name: {{ profile }}</h5>
+            <h5 class="card-text">Name: {{ profile.full_name }}</h5>
             <h5 class="card-text">Birthday: {{ profile.date_of_birth }}</h5>
             <h5 class="card-text">EGN: {{ profile.egn }}</h5>
             <h5 class="card-text">Mobile number: {{ profile.mobile_number }}</h5>

@@ -1,0 +1,25 @@
+.main-header nav a{
+    font-size: 18px;
+}
+
+.main-header nav a:hover{
+    font-weight: bold;
+}
+
+.text-center {
+    padding: 40px;
+}
+
+
+footer .links{
+    display: inline-block;
+    width: 100%;
+    text-align: center;
+}
+
+footer .coppy{
+    display: inline-block;
+    width: 100%;
+    text-align: center;
+}
+

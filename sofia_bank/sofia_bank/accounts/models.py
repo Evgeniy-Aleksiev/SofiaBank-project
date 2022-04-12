@@ -114,5 +114,6 @@ class Profile(models.Model):
         primary_key=True,
     )
 
-    def __str__(self):
+    @property
+    def full_name(self):
         return f'{self.first_name} {self.middle_name} {self.last_name}'

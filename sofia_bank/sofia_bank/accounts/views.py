@@ -1,5 +1,6 @@
-from django.contrib.auth import views as auth_views
+from django.contrib.auth import views as auth_views, authenticate, login
 from django.contrib.auth import mixins as auth_mixin
+from django.shortcuts import redirect
 from django.urls import reverse_lazy
 from django.views import generic as views
 
@@ -25,9 +26,15 @@ class UserLogoutView(auth_mixin.LoginRequiredMixin, auth_views.LogoutView):
 class UserRegisterView(views.CreateView):
     form_class = CreateProfileForm
     template_name = 'accounts/profile_create.html'
+    success_url = reverse_lazy('index')
 
-    def get_success_url(self):
-        return reverse_lazy('dashboard', kwargs={'pk': self.object.user.id})
+    def form_valid(self, form):
+        form.save()
+        username = self.request.POST['username']
+        password = self.request.POST['password1']
+        user = authenticate(username=form.cleaned_data['username'], password=form.cleaned_data['password1'],)
+        login(self.request, user)
+        return redirect(self.success_url)
 
 
 class ProfileDetailsView(auth_mixin.LoginRequiredMixin, views.DetailView):

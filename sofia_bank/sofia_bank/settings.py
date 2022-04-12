@@ -1,16 +1,17 @@
 import os
 from pathlib import Path
 
+from sofia_bank.common_files.utils import is_test, is_production
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-SECRET_KEY = os.getenv('SECRET_KEY')
+SECRET_KEY = os.getenv('SECRET_KEY', 'sk')
 
 
 DEBUG = os.getenv('DEBUG', 'False') == 'True'
-APP_ENVIRONMENT = os.getenv('APP_ENVIRONMENT')
+APP_ENVIRONMENT = os.getenv('APP_ENVIRONMENT', 'Development')
 
-ALLOWED_HOSTS = os.getenv('ALLOWED_HOSTS', '127.0.0.1').split(' ')
+ALLOWED_HOSTS = os.getenv('ALLOWED_HOSTS', '').split(' ')
 
 
 DJANGO_APPS = (
@@ -88,8 +89,8 @@ CACHES = {
 # https://docs.djangoproject.com/en/4.0/ref/settings/#auth-password-validators
 AUTH_PASSWORD_VALIDATORS = []
 
-if APP_ENVIRONMENT == 'Production':
-    AUTH_PASSWORD_VALIDATORS = [
+if is_production():
+    AUTH_PASSWORD_VALIDATORS.extend([
         {
             'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator',
         },
@@ -102,7 +103,7 @@ if APP_ENVIRONMENT == 'Production':
         {
             'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
         },
-    ]
+    ])
 
 
 # Internationalization
@@ -136,8 +137,10 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 LOGGING_LEVEL = "DEBUG"
 
-if APP_ENVIRONMENT == 'Production':
+if is_production():
     LOGGING_LEVEL = 'INFO'
+elif is_test():
+    LOGGING_LEVEL = 'CRITICAL'
 
 LOGGING = {
     'version': 1,
