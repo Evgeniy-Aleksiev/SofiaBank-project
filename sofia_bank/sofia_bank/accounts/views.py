@@ -64,9 +64,7 @@ class ProfileDeleteView(auth_mixin.LoginRequiredMixin, views.DeleteView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-
         loan = list(BankLoans.objects.filter(user_id=self.object.user_id))
-
         context.update({
             'loan': loan,
         })

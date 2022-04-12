@@ -1,20 +1,35 @@
-from datetime import date
+from datetime import date, datetime
 
 from django import test as django_test
 from django.urls import reverse
 
-from sofia_bank.accounts.models import Profile
-from sofia_bank.main.models import UserModel
+from sofia_bank.main.models import UserModel, BankLoans
 
 
 class BaseTest(django_test.TestCase):
     def setUp(self) -> None:
-        self.register_url=reverse('register')
-        self.login_url=reverse('login user')
+        self.register_url = reverse('register')
+        self.login_url = reverse('login user')
         self.user = {
             'username': 'testuser',
             'password': '12345qew'
         }
+
+    @staticmethod
+    def get_reversed_url(url, pk=None):
+        if pk is not None:
+            return reverse(url,  kwargs={'pk': pk, })
+        return reverse(url)
+
+    @staticmethod
+    def get_consumer_loan(pk):
+        return BankLoans.objects.create(
+            type='Consumer Loans',
+            amount=10000,
+            period=10,
+            loan_date=datetime.now(),
+            user_id=pk,
+        )
 
     VALID_USER_CREDENTIALS = {
         'username': 'testuser',
