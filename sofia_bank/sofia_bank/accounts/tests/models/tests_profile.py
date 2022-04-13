@@ -1,6 +1,4 @@
-from datetime import date
 
-from django import test as django_test
 from django.core.exceptions import ValidationError
 
 from sofia_bank.accounts.models import Profile
