@@ -88,7 +88,6 @@ class Profile(models.Model):
 
     mobile_number = models.CharField(
         max_length=9,
-        unique=True,
         validators=(
             MinLengthValidator(8),
             validate_only_numbers,

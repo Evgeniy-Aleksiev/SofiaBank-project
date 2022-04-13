@@ -5,8 +5,8 @@ from sofia_bank.accounts.tests.views.tests_authentication_view import BaseTest
 UserModel = get_user_model()
 
 
-class DeleteUserVIewTest(BaseTest):
-    def test_get__expect_correct_template_template_used(self):
+class DeleteUserViewTest(BaseTest):
+    def test_get__expect_correct_template_used(self):
         user, profile = self._create_valid_user_and_profile()
         self.client.get(self.get_reversed_url('profile delete', profile.pk))
         self.client.login(**self.VALID_USER_CREDENTIALS)
@@ -21,8 +21,8 @@ class DeleteUserVIewTest(BaseTest):
     def test_deleteUserCancel_should_redirect(self):
         user, profile = self._create_valid_user_and_profile()
         response = self.client.post(self.get_reversed_url('profile delete', profile.pk), data={'cancel': 'cancel'})
-        user = UserModel.objects.first()
         self.assertIsNotNone(profile)
         self.assertEqual(302, response.status_code)
+
 
 

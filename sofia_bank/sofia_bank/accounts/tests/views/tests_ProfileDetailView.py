@@ -1,3 +1,5 @@
+from datetime import date
+
 from django.contrib.auth import get_user_model
 from django.urls import reverse
 
@@ -27,4 +29,30 @@ class ProfileDetailsViewTests(BaseTest):
         self.assertTrue(response.context['total_deposits'])
         self.assertTrue(response.context['total_savings'])
         self.assertTrue(response.context['total_loan_paid'])
+
+
+class ProfileEditViewTest(BaseTest):
+    PROFILE_NEW_DATA = {
+        'first_name': 'Testov',
+        'middle_name': 'Testov',
+        'last_name': 'Testov',
+        'egn': '0000000000',
+        'email': 'test@test.bg',
+        'mobile_number': '987654321',
+        'date_of_birth': date(1999, 4, 13),
+    }
+
+    def test_get__expect_correct_template_used(self):
+        user, profile = self._create_valid_user_and_profile()
+        self.client.get(self.get_reversed_url('profile edit', profile.pk))
+        self.client.login(**self.VALID_USER_CREDENTIALS)
+        self.assertTemplateUsed('accounts/profile_edit.html')
+
+    def test_get__expect_correct_context(self):
+        user, profile = self._create_valid_user_and_profile()
+        self.client.login(**self.VALID_USER_CREDENTIALS)
+        response = self.client.post(self.get_reversed_url('profile edit', profile.pk), data=self.PROFILE_NEW_DATA)
+        self.assertEqual(response.status_code, 302)
+        profile.refresh_from_db()
+        self.assertEqual('987654321', profile.mobile_number)
 
