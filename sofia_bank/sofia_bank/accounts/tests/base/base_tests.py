@@ -6,7 +6,7 @@ from django.urls import reverse
 
 from sofia_bank.accounts.models import Profile
 from sofia_bank.common_files.helpers import deposit_a_loan
-from sofia_bank.main.models import BankLoans, BankSavings, AtmAndBranches, Feedback
+from sofia_bank.main.models import BankLoans, BankSavings, AtmAndBranches, Feedback, ExchangeRates
 
 UserModel = get_user_model()
 
@@ -41,7 +41,7 @@ class BaseTest(django_test.TestCase):
         return loan, deposit
 
     def get_feedback(self):
-        branch = self.get_atms_and_branches()
+        branch = self.get_atms_and_branches('Branches')
         return Feedback(
             username='Testov',
             details='Test info',
@@ -50,12 +50,23 @@ class BaseTest(django_test.TestCase):
         )
 
     @staticmethod
-    def get_atms_and_branches():
+    def create_exchange_rates():
+        return ExchangeRates(
+            date=datetime.now(),
+            currency='EUR',
+            fixing=1.9998,
+            buy=1.9555,
+            sell=1.9444,
+            currency_units=1,
+        )
+
+    @staticmethod
+    def get_atms_and_branches(branch):
         return AtmAndBranches(
             city='Sofia',
             neighborhood='Nadejda',
             street='Beli Dunav',
-            branches_and_atms='Branches',
+            branches_and_atms=branch,
             bank_or_atm_number='7676',
             open_on_date=datetime.now(),
         )

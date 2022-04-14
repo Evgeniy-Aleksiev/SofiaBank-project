@@ -1,6 +1,5 @@
 from django.urls import reverse_lazy
 from django.views import generic as views
-from django.contrib.auth import mixins as auth_mixin
 
 from sofia_bank.main.forms import FeedbackForm
 from sofia_bank.main.models import AtmAndBranches

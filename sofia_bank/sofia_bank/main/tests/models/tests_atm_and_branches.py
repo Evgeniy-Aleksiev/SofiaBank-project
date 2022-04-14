@@ -6,7 +6,7 @@ from sofia_bank.main.models import AtmAndBranches
 
 class AtmAndBranchesTest(BaseTest):
     def test_success_create_branches_withStreetAndNeighborhood(self):
-        branch = self.get_atms_and_branches()
+        branch = self.get_atms_and_branches('Branches')
         self.assertEqual('Branches', branch.branches_and_atms)
         self.assertEqual('Sofia', branch.city)
         self.assertEqual('Nadejda', branch.neighborhood)

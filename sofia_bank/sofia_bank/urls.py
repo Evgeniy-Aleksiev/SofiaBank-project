@@ -21,3 +21,6 @@ urlpatterns = [
     path('', include('sofia_bank.main.urls')),
     path('accounts/', include('sofia_bank.accounts.urls')),
 ]
+
+
+handler404 = "sofia_bank.main.views.generic.handle_not_found"

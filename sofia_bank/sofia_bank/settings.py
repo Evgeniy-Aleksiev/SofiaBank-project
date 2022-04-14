@@ -9,9 +9,10 @@ SECRET_KEY = os.getenv('SECRET_KEY', 'sk')
 
 
 DEBUG = os.getenv('DEBUG', 'True')
+
 APP_ENVIRONMENT = os.getenv('APP_ENVIRONMENT', 'Development')
 
-ALLOWED_HOSTS = os.getenv('ALLOWED_HOSTS', 'localhost 127.0.0.1').split(' ')
+ALLOWED_HOSTS = os.getenv('ALLOWED_HOSTS', ' ').split(' ')
 
 
 DJANGO_APPS = (

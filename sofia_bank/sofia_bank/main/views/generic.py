@@ -1,3 +1,4 @@
+from django.shortcuts import render
 from django.views import generic as views
 from django.contrib.auth import mixins as auth_mixin
 from django.views.decorators.cache import cache_page
@@ -36,3 +37,7 @@ class DashboardView(auth_mixin.LoginRequiredMixin, views.DetailView):
         })
 
         return context
+
+
+def handle_not_found(request, exception):
+    return render(request, 'main/404.html')
