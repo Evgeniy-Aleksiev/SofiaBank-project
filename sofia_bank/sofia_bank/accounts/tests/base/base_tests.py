@@ -31,7 +31,7 @@ class BaseTest(django_test.TestCase):
 
     def deposit_amount(self, pk):
         loan = self.get_consumer_loan(pk)
-        deposit = BankSavings(
+        deposit = BankSavings.objects.create(
             types='Deposit',
             amount=1000,
             deposit_date=datetime.now(),
@@ -41,8 +41,9 @@ class BaseTest(django_test.TestCase):
         return loan, deposit
 
     def get_feedback(self):
-        branch = self.get_atms_and_branches('Branches')
-        return Feedback(
+        branch = self.get_atms_and_branches('Branches', 7676)
+        branch.save()
+        return Feedback.objects.create(
             username='Testov',
             details='Test info',
             date=datetime.now(),
@@ -51,7 +52,7 @@ class BaseTest(django_test.TestCase):
 
     @staticmethod
     def create_exchange_rates():
-        return ExchangeRates(
+        return ExchangeRates.objects.create(
             date=datetime.now(),
             currency='EUR',
             fixing=1.9998,
@@ -61,13 +62,13 @@ class BaseTest(django_test.TestCase):
         )
 
     @staticmethod
-    def get_atms_and_branches(branch):
-        return AtmAndBranches(
+    def get_atms_and_branches(branch, number):
+        return AtmAndBranches.objects.create(
             city='Sofia',
             neighborhood='Nadejda',
             street='Beli Dunav',
             branches_and_atms=branch,
-            bank_or_atm_number='7676',
+            bank_or_atm_number=str(number),
             open_on_date=datetime.now(),
         )
 
@@ -89,7 +90,7 @@ class BaseTest(django_test.TestCase):
 
     @staticmethod
     def get_savings(pk):
-        return BankSavings(
+        return BankSavings.objects.create(
             types='Savings',
             amount=10000,
             deposit_date=datetime.now(),

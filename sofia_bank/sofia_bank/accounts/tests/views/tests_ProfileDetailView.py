@@ -10,8 +10,9 @@ UserModel = get_user_model()
 
 class ProfileDetailsViewTests(BaseTest):
     def test_when_opening_not_existing_profile__expect_404(self):
-        response = self.client.get('something/really/weird/')
-        self.assertEqual(response.status_code, 404)
+        response = self.client.get(self.get_reversed_url('profile details', 3))
+        self.assertEqual(response.status_code, 302)
+        self.assertTemplateUsed('main/404.html')
 
     def test_correct_template(self):
         user, profile = self._create_valid_user_and_profile()

@@ -10,11 +10,8 @@ class ContactViewTest(BaseTest):
         self.assertTemplateUsed('main/contacts.html')
 
     def test_get__expect_correct_context_data(self):
-        bank = self.get_atms_and_branches('Branches')
-        bank.save()
-        bank = self.get_atms_and_branches('ATMs')
-        bank.save()
+        self.get_atms_and_branches('Branches', 7575)
+        self.get_atms_and_branches('ATMs', 7676)
         response = self.client.get(reverse('contacts'))
         self.assertIsNotNone(response.context['banks'])
         self.assertIsNotNone(response.context['atms'])
-        bank.delete()
