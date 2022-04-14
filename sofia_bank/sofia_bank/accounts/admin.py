@@ -26,7 +26,8 @@ class SofiaBankUserAdmin(UserAdmin):
     list_filter = ('is_staff', 'is_superuser', 'groups')
     search_fields = ('username', )
     ordering = ('username', )
-
+    filter_horizontal = ('groups', 'user_permissions',)
+    readonly_fields = ('date_joined',)
 
 
 @admin.register(Profile)
