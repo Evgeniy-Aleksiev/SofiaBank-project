@@ -138,27 +138,39 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 LOGGING_LEVEL = "DEBUG"
 
-if is_production():
-    LOGGING_LEVEL = 'INFO'
-elif is_test():
-    LOGGING_LEVEL = 'CRITICAL'
-
-LOGGING = {
-    'version': 1,
-    'handlers': {
-        'console': {
-            # DEBUG, WARNING, INFO, ERROR, CRITICAL,
-            'level': LOGGING_LEVEL,
-            'filters': [],
-            'class': 'logging.StreamHandler',
-        }
-    },
-    'loggers': {
-        'django.db.backends': {
-            'level': LOGGING_LEVEL,
-            'handlers': ['console'],
-        }
-    }
-}
+# if is_production():
+#     LOGGING_LEVEL = 'INFO'
+# elif is_test():
+#     LOGGING_LEVEL = 'CRITICAL'
+#
+# LOGGING = {
+#     'version': 1,
+#     'handlers': {
+#         'console': {
+#             # DEBUG, WARNING, INFO, ERROR, CRITICAL,
+#             'level': LOGGING_LEVEL,
+#             'filters': [],
+#             'class': 'logging.StreamHandler',
+#         }
+#     },
+#     'loggers': {
+#         'django.db.backends': {
+#             'level': LOGGING_LEVEL,
+#             'handlers': ['console'],
+#         }
+#     }
+# }
 
 AUTH_USER_MODEL = 'accounts.SofiaBankUser'
+
+
+# EMAIL CONFIG
+
+# EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+# MAILER_EMAIL_BACKEND = EMAIL_BACKEND
+# EMAIL_HOST = os.environ.get('EMAIL_HOST', 'smtp.gmail.com')
+# EMAIL_HOST_PASSWORD = os.environ.get('EMAIL_HOST_PASSWORD', 'dsucqvbjuoblidpo')
+# EMAIL_HOST_USER = os.environ.get('EMAIL_HOST_USER', 'sofia.bank.project@gmail.com')
+# EMAIL_PORT = os.environ.get('EMAIL_PORT', 465)
+# EMAIL_USE_SSL = True
+# DEFAULT_FROM_EMAIL = EMAIL_HOST_USER

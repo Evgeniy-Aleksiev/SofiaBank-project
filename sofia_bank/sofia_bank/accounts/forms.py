@@ -99,7 +99,7 @@ class EditProfileForm(BootstrapFormMixin, forms.ModelForm):
         fields = '__all__'
 
 
-class DeleteProfileForm(forms.ModelForm):
+class DeleteProfileForm(BootstrapFormMixin, forms.ModelForm):
     def save(self, commit=True):
         self.instance.delete()
         return self.instance
