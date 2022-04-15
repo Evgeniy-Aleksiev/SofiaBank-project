@@ -20,6 +20,17 @@ class ProfileTests(BaseTest):
 
         self.assertIsNotNone(context.exception)
 
+    def test_profile_create__when_invalid_age_expect_return_message(self):
+        invalid_birth_date = '2024-02-02'
+        user, profile = self._create_valid_user_and_profile()
+        profile = Profile(date_of_birth=invalid_birth_date)
+        with self.assertRaises(ValidationError) as context:
+            profile.full_clean()
+            profile.save()
+
+        self.assertIsNotNone(context.exception)
+
+
     def test_profile_full_name__when_valid__expect_correct_full_name(self):
         user, profile = self._create_valid_user_and_profile()
         self.assertEqual('Testov Testov Testov', profile.full_name)

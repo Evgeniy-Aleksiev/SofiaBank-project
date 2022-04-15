@@ -3,7 +3,7 @@ from django.contrib.auth import forms as auth_forms, get_user_model
 from django.core.validators import MinLengthValidator
 
 from sofia_bank.accounts.models import Profile
-from sofia_bank.common_files.helpers import BootstrapFormMixin, DisabledFieldsFormMixin
+from sofia_bank.common_files.helpers import BootstrapFormMixin
 from sofia_bank.common_files.validators import validate_only_letters, validate_age, validate_only_numbers
 
 
