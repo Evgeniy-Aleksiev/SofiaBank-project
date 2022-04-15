@@ -84,7 +84,9 @@ class Profile(models.Model):
         )
     )
 
-    email = models.EmailField()
+    email = models.EmailField(
+        unique=True,
+    )
 
     mobile_number = models.CharField(
         max_length=9,
