@@ -27,9 +27,9 @@ class SofiaBankUser(auth_models.AbstractBaseUser, auth_models.PermissionsMixin):
         default=False,
     )
 
-    # is_email_verified = models.BooleanField(
-    #     default=False
-    # )
+    is_email_verified = models.BooleanField(
+        default=False
+    )
 
     loan_amount = models.FloatField(
         default=0
