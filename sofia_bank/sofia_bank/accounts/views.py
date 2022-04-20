@@ -98,6 +98,10 @@ class ProfileDeleteView(auth_mixin.LoginRequiredMixin, views.DeleteView):
         return context
 
 
+class ChangeUserPasswordView(auth_views.PasswordChangeView):
+    template_name = 'accounts/change_password.html'
+
+
 def activate_user(request, uidb64, token):
     try:
         uid = urlsafe_base64_decode(uidb64).decode()

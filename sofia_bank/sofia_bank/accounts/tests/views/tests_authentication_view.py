@@ -1,5 +1,8 @@
+from django.contrib.auth import get_user_model
+from django.core import mail
 from django.urls import reverse
 
+from sofia_bank.accounts.forms import CreateProfileForm
 from sofia_bank.accounts.tests.base.base_tests import BaseTest
 from sofia_bank.main.models import UserModel
 
