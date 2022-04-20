@@ -52,4 +52,3 @@ The Loan and Saving object could be private. Only the author of the account can 
 ---
 ### 6. Branches, ATMs, Feedback, Exchange rates objects
 This object could be either public or private. They can only be modified by the administrator.
-![GitHub Repo Card](https://github-readme-stats.vercel.app/api?username=Evgeniy-Aleksiev&theme=codeSTACKr&show_icons=true)
