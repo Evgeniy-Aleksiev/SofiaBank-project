@@ -11,8 +11,9 @@ Sofia Bank is a digital bank, in which you can withdraw different loans, deposit
 	- Create / Update / Delete own user profile
 	- Change password
 
-3. User Characteristics:
-	3.1 Anonymous User:
+3. User Characteristics:  
+---
+	3.1 Anonymous User:  
 		Anonymous user has only get permissions to bank informations.
 		They can get view of home page, which you can see the exchange rates, information about the bank and contacts.
 	3.2 Regular User:
