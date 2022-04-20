@@ -50,5 +50,5 @@ The Loan and Saving object could be private. Only the author of the account can 
 - Period - integer-field
 
 ---
-### 5. Branches, ATMs, Feedback, Exchange rates objects
+### 6. Branches, ATMs, Feedback, Exchange rates objects
 This object could be either public or private. They can only be modified by the administrator.
